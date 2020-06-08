@@ -1,5 +1,7 @@
 package com.example.service;
 
+import com.example.entity.Cart;
+import com.example.entity.User;
 import com.example.enums.UserEnums;
 import com.example.exception.UserException;
 import com.example.mapper.UserMapper;
@@ -53,10 +55,19 @@ public class UserService {
         try {
             checkName(name);
             checkPwd(pwd);
-            int status = userMapper.insertUser(name, pwd, realName);
-            if (status != 1){
+            User newUser = new User(name, pwd, realName);
+//            int status = userMapper.insertUser(newUser);
+//            if (status!=1)
+            if (userMapper.insertUser(newUser) != 1){
                 throw new UserException(UserEnums.REGISTER_FAIL);
             }
+            //System.out.println(newUser);
+            int newId = newUser.getId();
+            Cart newCart = new Cart(newId);
+            if (userMapper.newACart(newCart) != 1){
+                throw new UserException(UserEnums.CART_WRONG);
+            }
+            newUser.setCart(newCart);
         }catch (Exception e){
             return e.getMessage();
         }
