@@ -5,9 +5,9 @@ import com.example.mapper.UserMapper;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/users")
@@ -36,9 +36,19 @@ public class UserController {
         return userMapper.getUserInfo(id).getUserName() + ran3;
     }
 
-    @RequestMapping("login/{name}/{pwd}")
-    public String userLogin(@PathVariable String name, @PathVariable String pwd){
+    @RequestMapping("loginGet/{name}/{pwd}")
+    public String userLoginGet(@PathVariable String name, @PathVariable String pwd){
         return userService.userLogin(name, pwd);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value="login", method = RequestMethod.POST)
+    public String userLoginPost(HttpServletRequest request){
+        System.out.println(request.getRemoteAddr());
+        System.out.println(request.getRemotePort());
+        String userName = request.getParameter("username");
+        String userPwd = request.getParameter("password");
+        return userService.userLogin(userName, userPwd);
     }
 
     @RequestMapping("registion/{name}/{pwd}/{realName}")
@@ -50,6 +60,4 @@ public class UserController {
     public String changePwd(@PathVariable String name, @PathVariable String pwd, @PathVariable String newPwd){
         return userService.changePwd(name, pwd, newPwd);
     }
-
-
 }
