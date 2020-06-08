@@ -36,10 +36,10 @@ public class UserController {
         return userMapper.getUserInfo(id).getUserName() + ran3;
     }
 
-    @RequestMapping("login/{name}/{pwd}")
-    public String userLogin(@PathVariable String name, @PathVariable String pwd){
-        return userService.userLogin(name, pwd);
-    }
+//    @RequestMapping("login/{name}/{pwd}")
+//    public String userLogin(@PathVariable String name, @PathVariable String pwd){
+//        return userService.userLogin(name, pwd);
+//    }
 
     @RequestMapping("registion/{name}/{pwd}/{realName}")
     public String userReg(@PathVariable String name, @PathVariable String pwd, @PathVariable String realName){
