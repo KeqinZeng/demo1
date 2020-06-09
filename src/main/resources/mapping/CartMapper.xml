@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CartMapper">
+
+
+
+    <select id="searchCartId" resultType="com.example.entity.Cart">
+        select * from cart where userId = #{userId}
+    </select>
+
+    <insert id="insertCart" parameterType="CartItem" useGeneratedKeys="true" keyProperty="id">
+        insert into cartitem (cartId, productId, productAmount) values (#{cartId}, #{productId}, #{productAmount})
+    </insert>
+
+
+
+</mapper>

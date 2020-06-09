@@ -4,6 +4,7 @@ import com.example.entity.Cart;
 import com.example.entity.User;
 import com.example.enums.UserEnums;
 import com.example.exception.UserException;
+import com.example.mapper.CartMapper;
 import com.example.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
 
     private final static Logger logger = LoggerFactory.getLogger(UserService.class);
 
@@ -124,8 +126,6 @@ public class UserService {
             //return "Can't Change!";
             return UserEnums.PWD_ERROR.getMessage();
         }
-
-
     }
 
 }
