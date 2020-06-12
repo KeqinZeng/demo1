@@ -8,10 +8,25 @@
         select * from cart where userId = #{userId}
     </select>
 
+    <select id="searchUserId" resultType="com.example.entity.Cart">
+        select * from cart where id = #{cartId}
+    </select>
+
     <insert id="insertCart" parameterType="CartItem" useGeneratedKeys="true" keyProperty="id">
         insert into cartitem (cartId, productId, productAmount) values (#{cartId}, #{productId}, #{productAmount})
     </insert>
 
+    <select id="searchCartItems" resultType="com.example.persistent.CartItemPO">
+        select * from cartitem where cartId = #{cartId}
+    </select>
+
+    <delete id="cutAItem">
+        delete from cartitem where id=#{cartItemId}
+    </delete>
+
+    <update id="updateItemAmount">
+        update cartitem set productAmount = #{newProductAmount} where id = #{cartItemId}
+    </update>
 
 
 </mapper>

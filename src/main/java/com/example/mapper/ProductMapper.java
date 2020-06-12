@@ -9,4 +9,6 @@ import java.util.ArrayList;
 @Repository
 public interface ProductMapper {
     ArrayList<Product> getAllProducts();
+    Product getAProduct(int productId);
+
 }

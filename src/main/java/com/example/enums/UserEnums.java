@@ -9,7 +9,9 @@ public enum UserEnums {
     REGISTER_FAIL(5, "注册失败"),
     TOOLONG_NAME(6,"用户名过长"),
     TOOLONG_PWD(7, "密码过长"),
-    CART_WRONG(8, "创建购物车失败")
+    CART_WRONG(8, "创建购物车失败"),
+    AMOUNTCHANGE_WRONG(9,"修改购物车内商品数量失败"),
+    CUTITEM_WRONG(10, "删除购物车内商品失败")
     ;
 
     private int code;

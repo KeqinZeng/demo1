@@ -1,18 +1,18 @@
 package com.example.entity;
 
-import java.util.ArrayList;
-
 public class CartItem {
     private int id;
     private Product product;
     private int productAmount;
     private int cartId;
 
-    public int getCartId() {
-        return cartId;
+    public CartItem() {
     }
 
-    public void setCartId(int cartId) {
+    public CartItem(int id, Product product, int productAmount, int cartId) {
+        this.id = id;
+        this.product = product;
+        this.productAmount = productAmount;
         this.cartId = cartId;
     }
 
@@ -38,5 +38,18 @@ public class CartItem {
 
     public void setProductAmount(int productAmount) {
         this.productAmount = productAmount;
+    }
+
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
+
+    @Override
+    public String toString() {
+        return "ID =" + this.id + " Product = " + this.product + " productAmount =" + this.productAmount;
     }
 }

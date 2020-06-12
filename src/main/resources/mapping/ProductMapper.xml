@@ -15,5 +15,10 @@
         select * from product
     </select>
 
+    <select id="getAProduct" resultType="com.example.entity.Product">
+        select * from product where id = #{productId}
+    </select>
+
+
 
 </mapper>

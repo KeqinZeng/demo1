@@ -6,6 +6,16 @@ public class Product {
     private String productInfo;
     private float productPrice;
 
+    public Product(int id, String productName, String productInfo, float productPrice) {
+        this.id = id;
+        this.productName = productName;
+        this.productInfo = productInfo;
+        this.productPrice = productPrice;
+    }
+
+    public Product() {
+    }
+
     public int getId() {
         return id;
     }
@@ -40,6 +50,6 @@ public class Product {
 
     @Override
     public String toString(){
-        return "ID =" + this.id + " ProductName = " + this.productName + " Info =" + this.productInfo + " perPrice = " + this.productPrice ;
+        return "productId =" + this.id + " ProductName = " + this.productName + " Info =" + this.productInfo + " perPrice = " + this.productPrice ;
     }
 }

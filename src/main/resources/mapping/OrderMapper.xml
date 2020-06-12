@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.OrderMapper">
+
+
+    <insert id="createOrder" parameterType="com.example.persistent.OrderPO" useGeneratedKeys="true" keyProperty="id">
+        insert into orders (orderNumber, userId, totalPrice) values (#{orderNumber}, #{userId}, #{totalPrice})
+    </insert>
+
+    <select id="searchOrder" resultType="com.example.persistent.OrderPO">
+        select * from orders where  orderNumber= #{orderNumber}
+    </select>
+
+    <update id="updateTotalPrice">
+        update orders set totalPrice = #{totalPrice} where id = #{orderId}
+    </update>
+
+    <insert id="createOrderItem" parameterType="com.example.persistent.OrderItemPO" useGeneratedKeys="true" keyProperty="id">
+        insert into orderitem (orderId, productId, productAmount) values (#{orderId}, #{productId}, #{productAmount})
+    </insert>
+
+</mapper>

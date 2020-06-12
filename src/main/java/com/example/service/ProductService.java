@@ -16,7 +16,11 @@ public class ProductService {
 
     public ArrayList<Product> getAllProducts(){
         return productMapper.getAllProducts();
+    }
 
+    public Product getAProduct(int productId){
+        //return productMapper.getAProduct(productId).toString();
+        return productMapper.getAProduct(productId);
     }
 
 }
